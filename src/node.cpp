@@ -157,7 +157,7 @@ int main(int argc, char** argv)
 	ROS_DEBUG_STREAM("before you get mad at me that the imu messages are not being published at 400 hz when you may set it to 400 hz, currently the way that it is being done is that, only when each time you get new linear speeds and gyro messages are received that you publish a new imu_msg. You could maybe try to publish always the most update one and do something fancy like having threads and updating a common latest message and then publishing that every time either one of the fields changed. This is left as an exercise to the reader.");
 	if (wait_to_start)
 	{
-		ros::Rate wait_rate(0.1);
+		ros::Rate wait_rate(5);
 		bool start_now = false;
 		boost::function<bool(std_srvs::EmptyRequest& req, std_srvs::EmptyResponse& res)> wait_callback = [&start_now](auto req, auto res) -> bool
 		{
